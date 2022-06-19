@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+body{background-color:#ededed;}
+.top{height:30px; background-color:#5181e3}
+.content{width:1300px; margin:0 auto;}
+.content table{width:100%;background-color:#fff;margin-top:20px;border: 1px solid #ced0d7;}
+.content table th{height:45px;position:relative}
+.content table th::after{content:""; display:block; width:1px; height:25px; background-color:#000; position:absolute; right:0px; top:10px;}
+.content table th:last-child::after{display:none;}
+.content table td{text-align:center;height:37px;border-top:2px solid #eaeaea}
+.content .write{text-align:right;padding:0 20px;}
