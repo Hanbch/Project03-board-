@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
+
+<script src="js/main.js"></script><!-- 마우스효과 구현 -->
 </head>
 
 <body>
@@ -37,10 +39,10 @@
 						<td>${dto.bid}</td>
 						<td>
 							<c:forEach begin="1" end="${dto.bindent}">[Re]</c:forEach>
-							<a href="content_view.do?bid=${dto.bid}">${dto.btitle}</a>
+							<a href="content_view.do?bid=${dto.bid}" class="link" >${dto.btitle}</a>
 						</td>
 						<td class="text">
-							<a href="content_view.do?bid=${dto.bid}">${dto.bcontent}</a>
+							<a href="content_view.do?bid=${dto.bid}" class="link">${dto.bcontent}</a>
 						</td>
 						<td>${dto.bname}</td>
 						<td style="font-size:12px">${dto.bdate}</td>
@@ -55,7 +57,6 @@
             </table>
         </div>
     </div>
-    
 </body>
 
 </html>
