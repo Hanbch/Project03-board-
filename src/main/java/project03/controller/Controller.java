@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import project03.command.ModifyCommand;
 import project03.command.Command;
 import project03.command.ContentCommand;
 import project03.command.DeleteCommand;
@@ -91,6 +92,11 @@ public class Controller extends HttpServlet {
 			viewPage = "list.do";
 		}else if(com.equals("/delete.do")) {
 			command = new DeleteCommand();
+			command.execute(request, response);
+			
+			viewPage = "list.do";
+		}else if(com.equals("/modify.do")) {
+			command = new ModifyCommand();
 			command.execute(request, response);
 			
 			viewPage = "list.do";

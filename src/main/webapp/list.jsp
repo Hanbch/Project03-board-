@@ -15,10 +15,19 @@
         <div class="top"></div>
         <div class="content">
             <table>
+	            <colgroup>
+				    <col width="10%"/>
+				    <col width="10%"/>
+				    <col width="50%"/>
+				    <col width="10%"/>				 
+				    <col width="10%"/>
+				    <col width="10%"/>
+				 </colgroup>
                 <tr>
                     <th>번호</th>
-                    <th>글쓴이</th>
                     <th>제목</th>         
+                    <th>내용</th> 
+                    <th>글쓴이</th>        
                     <th>날짜</th>
                     <th>조회수</th>
                 </tr>
@@ -26,18 +35,21 @@
                 <c:forEach var="dto" items="${dtos}">
 					<tr>
 						<td>${dto.bid}</td>
-						<td>${dto.bname}</td>
 						<td>
 							<c:forEach begin="1" end="${dto.bindent}">[Re]</c:forEach>
 							<a href="content_view.do?bid=${dto.bid}">${dto.btitle}</a>
 						</td>
-						<td>${dto.bdate}</td>
+						<td class="text">
+							<a href="content_view.do?bid=${dto.bid}">${dto.bcontent}</a>
+						</td>
+						<td>${dto.bname}</td>
+						<td style="font-size:12px">${dto.bdate}</td>
 						<td>${dto.bhit}</td>				
 					</tr>
 				</c:forEach>
 		
 				<tr>
-					<td colspan="5" class="write"> <a href="write_view.do">글 작성</a></td>
+					<td colspan="6" class="write"> <a href="write_view.do">글 작성</a></td>
 				</tr>
 
             </table>

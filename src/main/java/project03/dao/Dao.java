@@ -135,6 +135,8 @@ public class Dao {
 		Connection connection = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
+		uphit(bid);
 
 		try {
 
@@ -204,6 +206,49 @@ public class Dao {
 			stmt.setInt(1, Integer.parseInt(group));
 			stmt.setInt(2, Integer.parseInt(step));
 
+
+			int rn = stmt.executeUpdate();
+
+			System.out.println("업데이트 갯수 :" + rn);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (connection != null)
+					connection.close();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+	
+	public void uphit(String bid) { //조회수 올리는 메서드 content_veiw들어갈떄 메서드 실행
+
+		System.out.println("uphit()");
+
+		Connection connection = null;
+		PreparedStatement stmt = null;
+
+		try {
+
+			// 이때 ?,?,? 물음표는 아래에서 setString메소드로 넣어줄 값을 표현하는 것
+			/*
+			 * 파라미터로 받는 값이 bname, btitle, bcontent 3개므로 3개만 ?로 넣고 나머지는 0으로 설정했다. 글 작성시
+			 * 조회수(bhit)는 0이고, 원본 글로 취급하므로 bstep, bindent는 지수를 넣어줄 필요가 없기 때문이다.
+			 */
+
+			String query = "update mvc_board set bhit = bhit + 1 where bid = ?";
+
+			connection = dataSource.getConnection();
+			stmt = connection.prepareStatement(query);
+
+			stmt.setInt(1,Integer.parseInt(bid));
 
 			int rn = stmt.executeUpdate();
 
@@ -342,5 +387,47 @@ public class Dao {
 		}
 
 	}
+	
+	public void modify(String bid,String bname,String btitle,String bcontent) {
+
+	      System.out.println("수정..");
+
+	      Connection connection = null;
+	      PreparedStatement stmt = null;
+
+	      try {
+
+	         String query = "update mvc_board set bname = ?, btitle = ?, bcontent = ? " +
+	         " where bid = ?";
+
+	         connection = dataSource.getConnection();
+	         stmt = connection.prepareStatement(query);
+
+	         stmt.setString(1, bname);
+	         stmt.setString(2, btitle);
+	         stmt.setString(3, bcontent);
+	         stmt.setInt(4, Integer.parseInt(bid));
+	         
+
+	         int rn = stmt.executeUpdate();
+
+	         System.out.println("업데이트 갯수 :" + rn);
+
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+
+	         try {
+	            if (stmt != null)
+	               stmt.close();
+	            if (connection != null)
+	               connection.close();
+
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+	      }
+
+	   }
 	
 }

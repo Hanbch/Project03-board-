@@ -9,3 +9,5 @@ body{background-color:#ededed;}
 .content table th:last-child::after{display:none;}
 .content table td{text-align:center;height:37px;border-top:2px solid #eaeaea}
 .content .write{text-align:right;padding:0 20px;}
+.content .text {text-align:left;padding:0 40px}
+.content .text a{width:650px;display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
